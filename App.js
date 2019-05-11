@@ -29,31 +29,64 @@ export default class App extends Component<Props> {
             </View>
             <View style={styles.calc_pad}>
                 <View style={styles.numbers}>
-                    <TouchableOpacity onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
                         <Text style={styles.numbers_font}>7</Text>
                     </TouchableOpacity>
-                    <Button title="4" />
-                    <Button title="1" />
-                    <Button title="." />
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>4</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>1</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>.</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.numbers}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>8</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>5</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>2</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>0</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.numbers}>
-                    <Button title="8" />
-                    <Button title="5" />
-                    <Button title="2" />
-                    <Button title="0" />
-                </View>
-                <View style={styles.numbers}>
-                    <Button title="9" />
-                    <Button title="6" />
-                    <Button title="3" />
-                    <Button title="=" />
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>9</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>6</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>3</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>=</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.operations}>
-                    <Button title="DEL" />
-                    <Button title="+" />
-                    <Button title="-" />
-                    <Button title="x" />
-                    <Button title="÷" />
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>DEL</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>+</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>-</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>x</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                        <Text style={styles.numbers_font}>÷</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
       </View>
@@ -96,16 +129,23 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center'
     },
+    buttons: {
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'stretch'
+    },
+    numbers_font: {
+        color: '#3279FF',
+        fontSize: 20
+    },
     operations: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignItems: 'stretch',
         backgroundColor: '#E1E1E1'
-    },
-    numbers_font: {
-        color: '#3279FF',
-        fontSize: 30,
-        backgroundColor: 'yellow'
     }
 });
