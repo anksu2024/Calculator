@@ -11,8 +11,13 @@ import {Platform, StyleSheet, Text, View, Button, TouchableOpacity, Alert} from 
 
 type Props = {};
 export default class App extends Component<Props> {
-  onPressFunction() {
-    Alert.alert("Button 7 Pressed")
+  constructor(props) {
+    super(props);
+    this.onPressFunction = this.onPressFunction.bind(this)
+  }
+
+  onPressFunction(val) {
+    console.log(String(val));
   }
 
   render() {
@@ -29,62 +34,62 @@ export default class App extends Component<Props> {
             </View>
             <View style={styles.calc_pad}>
                 <View style={styles.numbers}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 7)}>
                         <Text style={styles.numbers_font}>7</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 4)}>
                         <Text style={styles.numbers_font}>4</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 1)}>
                         <Text style={styles.numbers_font}>1</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, ".")}>
                         <Text style={styles.numbers_font}>.</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.numbers}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 8)}>
                         <Text style={styles.numbers_font}>8</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 5)}>
                         <Text style={styles.numbers_font}>5</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 2)}>
                         <Text style={styles.numbers_font}>2</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 0)}>
                         <Text style={styles.numbers_font}>0</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.numbers}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 9)}>
                         <Text style={styles.numbers_font}>9</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 6)}>
                         <Text style={styles.numbers_font}>6</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 3)}>
                         <Text style={styles.numbers_font}>3</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "=")}>
                         <Text style={styles.numbers_font}>=</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.operations}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "DEL")}>
                         <Text style={styles.numbers_font}>DEL</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "+")}>
                         <Text style={styles.numbers_font}>+</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "-")}>
                         <Text style={styles.numbers_font}>-</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "x")}>
                         <Text style={styles.numbers_font}>x</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction}>
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "÷")}>
                         <Text style={styles.numbers_font}>÷</Text>
                     </TouchableOpacity>
                 </View>
