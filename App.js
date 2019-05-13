@@ -11,92 +11,83 @@ import {Platform, StyleSheet, Text, View, Button, TouchableOpacity, Alert} from 
 
 type Props = {};
 export default class App extends Component<Props> {
-  constructor(props) {
-    super(props);
-    this.onPressFunction = this.onPressFunction.bind(this)
-  }
+    constructor(props) {
+        super(props);
+        this.onPressFunction = this.onPressFunction.bind(this);
+        this.state = {
+            expression: '',
+            result: ''
+        }
+    }
 
-  onPressFunction(val) {
-    console.log(String(val));
-  }
+    onPressFunction(val) {
+        console.log(String(val));
+        const myExpression = this.state.expression.concat(String(val));
+        console.log(myExpression);
+        this.setState({
+            expression: myExpression
+        })
+    }
 
-  render() {
-    return (
-      <View style={styles.container}>
-            <View style={styles.app_title}>
-                <Text style={{fontSize: 25}}>Calculator</Text>
-            </View>
-            <View style={styles.expression}>
-                <Text style={{fontSize: 30}}>expression</Text>
-            </View>
-            <View style={styles.result}>
-                <Text style={{fontSize: 35}}>result</Text>
-            </View>
-            <View style={styles.calc_pad}>
-                <View style={styles.numbers}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 7)}>
-                        <Text style={styles.numbers_font}>7</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 4)}>
-                        <Text style={styles.numbers_font}>4</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 1)}>
-                        <Text style={styles.numbers_font}>1</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, ".")}>
-                        <Text style={styles.numbers_font}>.</Text>
-                    </TouchableOpacity>
-                </View>
+    render() {
+        numbers = [[7, 4, 1, "."], [8, 5, 2, 0], [9, 6, 3, "="]];
+        var final_number_items = [];
 
+        for(let i = 0 ; i < 3 ; i++) {
+            var number_items = [];
+
+            for(let j = 0 ; j < 4 ; j++) {
+                number_items.push(
+                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(
+                        this, numbers[i][j])}>
+                        <Text style={styles.numbers_font}>{numbers[i][j]}</Text>
+                    </TouchableOpacity>
+                )
+            }
+
+            final_number_items.push(
                 <View style={styles.numbers}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 8)}>
-                        <Text style={styles.numbers_font}>8</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 5)}>
-                        <Text style={styles.numbers_font}>5</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 2)}>
-                        <Text style={styles.numbers_font}>2</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 0)}>
-                        <Text style={styles.numbers_font}>0</Text>
-                    </TouchableOpacity>
+                    {number_items}
                 </View>
-                <View style={styles.numbers}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 9)}>
-                        <Text style={styles.numbers_font}>9</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 6)}>
-                        <Text style={styles.numbers_font}>6</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, 3)}>
-                        <Text style={styles.numbers_font}>3</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "=")}>
-                        <Text style={styles.numbers_font}>=</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.operations}>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "DEL")}>
-                        <Text style={styles.numbers_font}>DEL</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "+")}>
-                        <Text style={styles.numbers_font}>+</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "-")}>
-                        <Text style={styles.numbers_font}>-</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "x")}>
-                        <Text style={styles.numbers_font}>x</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(this, "÷")}>
-                        <Text style={styles.numbers_font}>÷</Text>
-                    </TouchableOpacity>
-                </View>
+            )
+        }
+
+        operations = ["DEL", "+", "-", "x", "÷"];
+        var final_operations_items = [];
+        var operations_items = []
+        for(let k = 0 ; k < 5 ; k++) {
+            operations_items.push(
+                <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(
+                    this, operations[k])}>
+                    <Text style={styles.numbers_font}>{operations[k]}</Text>
+                </TouchableOpacity>
+            )
+        }
+
+        final_operations_items.push(
+            <View style={styles.operations}>
+                {operations_items}
             </View>
-      </View>
-    );
-  }
+        )
+
+        return (
+          <View style={styles.container}>
+                <View style={styles.app_title}>
+                    <Text style={{fontSize: 25}}>Calculator</Text>
+                </View>
+                <View style={styles.expression}>
+                    <Text style={{fontSize: 30}}>{this.state.expression}</Text>
+                </View>
+                <View style={styles.result}>
+                    <Text style={{fontSize: 35}}>{this.state.result}</Text>
+                </View>
+                <View style={styles.calc_pad}>
+                    {final_number_items}
+                    {final_operations_items}
+                </View>
+          </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
