@@ -15,18 +15,43 @@ export default class App extends Component<Props> {
         super(props);
         this.onPressFunction = this.onPressFunction.bind(this);
         this.state = {
-            expression: '',
-            result: ''
+            expression: "",
+            result: "0"
         }
     }
 
     onPressFunction(val) {
-        console.log(String(val));
-        const myExpression = this.state.expression.concat(String(val));
-        console.log(myExpression);
-        this.setState({
-            expression: myExpression
-        })
+        var myExpression = "";
+        switch(val) {
+            case "=":
+                myExpression = this.state.expression;
+                console.log(myExpression);
+                const myEvaluatedExpression = String(eval(
+                    myExpression.replace(/÷/g, "/").replace(/x/g, "*")));
+                this.setState({
+                    expression: myEvaluatedExpression,
+                    result: myEvaluatedExpression
+                })
+                break;
+            case "AC":
+                this.setState({
+                    expression: "",
+                    result: "0"
+                })
+                break;
+            case "C":
+                myExpression = this.state.expression.slice(0, -1);
+                this.setState({
+                    expression: myExpression
+                })
+                break;
+            default:
+                myExpression = this.state.expression.concat(val);
+                console.log(myExpression);
+                this.setState({
+                    expression: myExpression
+                })
+        }
     }
 
     render() {
@@ -39,7 +64,7 @@ export default class App extends Component<Props> {
             for(let j = 0 ; j < 4 ; j++) {
                 number_items.push(
                     <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(
-                        this, numbers[i][j])}>
+                        this, String(numbers[i][j]))}>
                         <Text style={styles.numbers_font}>{numbers[i][j]}</Text>
                     </TouchableOpacity>
                 )
@@ -52,10 +77,10 @@ export default class App extends Component<Props> {
             )
         }
 
-        operations = ["DEL", "+", "-", "x", "÷"];
+        operations = ["AC", "C", "+", "-", "x", "÷"];
         var final_operations_items = [];
         var operations_items = []
-        for(let k = 0 ; k < 5 ; k++) {
+        for(let k = 0 ; k < 6 ; k++) {
             operations_items.push(
                 <TouchableOpacity style={styles.buttons} onPress={this.onPressFunction.bind(
                     this, operations[k])}>
@@ -79,7 +104,7 @@ export default class App extends Component<Props> {
                     <Text style={{fontSize: 30}}>{this.state.expression}</Text>
                 </View>
                 <View style={styles.result}>
-                    <Text style={{fontSize: 35}}>{this.state.result}</Text>
+                    <Text style={{fontSize: 60}}>{this.state.result}</Text>
                 </View>
                 <View style={styles.calc_pad}>
                     {final_number_items}
