@@ -1,9 +1,7 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @format
- * @flow
+ * Simple Calculator App
  * @author: Ankit Sarraf
+ * @dated: May 06, 2019
  */
 
 import React, {Component} from 'react';
